@@ -1,12 +1,17 @@
-package com.example.testeableapp
+package com.example.testeableapp.UItest
 
 import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.*
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performSemanticsAction
+import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.testeableapp.ui.Screens.TipCalculatorScreen
 import org.junit.Rule
 import org.junit.Test
-import com.example.testeableapp.ui.Screens.TipCalculatorScreen
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
