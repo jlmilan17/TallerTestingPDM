@@ -1,4 +1,4 @@
-package com.example.testeableapp
+package com.example.testeableapp.UnitTests
 
 import org.junit.Test
 import org.junit.Assert.assertEquals
