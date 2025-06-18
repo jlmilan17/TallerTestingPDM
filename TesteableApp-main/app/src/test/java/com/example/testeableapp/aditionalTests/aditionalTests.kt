@@ -6,14 +6,12 @@ import org.junit.Test
 
 class TipCalculatorTest {
 
-    //la propina sigue siendo 0 si no se ingresa monto.
     @Test
     fun calculaLaPropinaSiElMontoEsCero() {
         val result = calculateTip(amount = 0.0, tipPercent = 20, roundUp = true)
         assertEquals(0.0, result, 0.001)
     }
 
-    //se calcula correctamente una propina realista.
     @Test
     fun calculaLaPropinaSiEsDecimal() {
         val result = calculateTip(amount = 83.25, tipPercent = 18, roundUp = false)
