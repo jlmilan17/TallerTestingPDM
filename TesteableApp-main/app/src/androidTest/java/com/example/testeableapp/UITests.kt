@@ -1,0 +1,68 @@
+package com.example.testeableapp
+
+import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.*
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.junit.Rule
+import org.junit.Test
+import com.example.testeableapp.ui.Screens.TipCalculatorScreen
+import org.junit.runner.RunWith
+
+@RunWith(AndroidJUnit4::class)
+class TipCalculatorUITest {
+    @get:Rule
+    val composeTestRule = createComposeRule()
+
+    @Test
+    fun roundUpCheckboxChangesTipCalculation() {
+        composeTestRule.setContent {
+            TipCalculatorScreen()
+        }
+        composeTestRule
+            .onNodeWithTag("BillAmount")
+            .performTextInput("10")
+        composeTestRule
+            .onNodeWithText("Propina: $1.50")
+            .assertIsDisplayed()
+        composeTestRule
+            .onNodeWithTag("RoundUpCheckbox")
+            .performClick()
+        composeTestRule
+            .onNodeWithText("Propina: $2.00")
+            .assertIsDisplayed()
+    }
+    @Test
+    fun sliderChangesTipCalculation() {
+        composeTestRule.setContent {
+            TipCalculatorScreen()
+        }
+        composeTestRule
+            .onNodeWithTag("BillAmount")
+            .performTextInput("100")
+
+        composeTestRule
+            .onNodeWithText("Porcentaje de propina: 15%")
+            .assertIsDisplayed()
+        composeTestRule
+            .onNodeWithTag("TipSlider")
+            .performSemanticsAction(SemanticsActions.SetProgress) { setProgress: (progress: Float) -> Boolean ->
+                setProgress(50f)
+            }
+        composeTestRule
+            .onNodeWithText("Porcentaje de propina: 50%")
+            .assertIsDisplayed()
+        composeTestRule
+            .onNodeWithText("Propina: $50.00")
+            .assertIsDisplayed()
+    }
+    @Test
+    fun validatePresenceOfUIElements() {
+        composeTestRule.setContent { TipCalculatorScreen() }
+        composeTestRule.onNodeWithText("Calculadora de Propinas").assertIsDisplayed()
+        composeTestRule.onNodeWithTag("BillAmount").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Porcentaje de propina:", substring = true).assertIsDisplayed()
+        composeTestRule.onNodeWithText("Número de personas:", substring = true).assertIsDisplayed()
+        composeTestRule.onNodeWithTag("TipSlider").assertIsDisplayed()
+    }
+}

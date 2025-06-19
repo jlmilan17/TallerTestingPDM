@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 
@@ -53,7 +54,7 @@ fun TipCalculatorScreen() {
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number
             ),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().testTag("BillAmount")
         )
 
         Text("Porcentaje de propina: $tipPercentage%")
@@ -62,7 +63,7 @@ fun TipCalculatorScreen() {
             onValueChange = { tipPercentage = it.toInt() },
             valueRange = 0f..50f,
             steps = 49,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().testTag("TipSlider")
         )
 
         Text("Número de personas: $numberOfPeople")
@@ -86,7 +87,8 @@ fun TipCalculatorScreen() {
         ) {
             Checkbox(
                 checked = roundUp,
-                onCheckedChange = { roundUp = it }
+                onCheckedChange = { roundUp = it },
+                modifier = Modifier.testTag("RoundUpCheckbox")
             )
             Text("Redondear propina", modifier = Modifier.padding(start = 8.dp))
         }
@@ -105,6 +107,10 @@ fun TipCalculatorScreen() {
 }
 
 fun calculateTip(amount: Double, tipPercent: Int, roundUp: Boolean): Double {
+    //Aqui haremos que devuelva 0 si el monto es negativo
+    if(amount < 0) return 0.0
+
+    //Resto de la logica se mantiene igual
     var tip = amount * tipPercent / 100
     if (roundUp) {
         tip = kotlin.math.ceil(tip)
