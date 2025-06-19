@@ -72,7 +72,8 @@ fun TipCalculatorScreen() {
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Button(onClick = { if (numberOfPeople > 1) numberOfPeople-- }) {
+            Button(onClick = { if (numberOfPeople > 1) numberOfPeople-- },
+                modifier = Modifier.testTag("ReducirPersonas")) {
                 Text("-")
             }
             Text(text = numberOfPeople.toString())
