@@ -8,7 +8,7 @@
       <SelectionState runConfigName="AdditionalUITest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AdditionalUItest2">
+      <SelectionState runConfigName="AdditionalUitest2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="TipCalculatorUITest">
