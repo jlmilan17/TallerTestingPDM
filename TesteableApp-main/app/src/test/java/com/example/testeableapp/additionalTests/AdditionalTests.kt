@@ -1,4 +1,4 @@
-package com.example.testeableapp
+package com.example.testeableapp.additionalTests
 
 import com.example.testeableapp.ui.Screens.calculateTip
 import org.junit.Assert.assertEquals
