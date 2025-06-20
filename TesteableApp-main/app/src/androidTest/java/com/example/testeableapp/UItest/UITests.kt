@@ -1,4 +1,4 @@
-package com.example.testeableapp.UItest
+package com.example.testeableapp.uiTest
 
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertIsDisplayed
@@ -20,7 +20,7 @@ class TipCalculatorUITest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun roundUpCheckboxChangesTipCalculation() {
+    fun roundUpAffectsTip() {
         composeTestRule.setContent {
             TipCalculatorScreen()
         }
@@ -38,7 +38,7 @@ class TipCalculatorUITest {
             .assertIsDisplayed()
     }
     @Test
-    fun sliderChangesTipCalculation() {
+    fun sliderUpdatesTip() {
         composeTestRule.setContent {
             TipCalculatorScreen()
         }
@@ -62,7 +62,7 @@ class TipCalculatorUITest {
             .assertIsDisplayed()
     }
     @Test
-    fun validatePresenceOfUIElements() {
+    fun uiElementsAreDisplayed() {
         composeTestRule.setContent { TipCalculatorScreen() }
         composeTestRule.onNodeWithText("Calculadora de Propinas").assertIsDisplayed()
         composeTestRule.onNodeWithTag("BillAmount").assertIsDisplayed()

@@ -1,4 +1,4 @@
-package com.example.testeableapp.UnitTests
+package com.example.testeableapp.unitTest
 
 import org.junit.Test
 import org.junit.Assert.assertEquals
@@ -7,22 +7,22 @@ import com.example.testeableapp.ui.Screens.calculateTip
 
 class TipCalculatorTest {
     @Test
-    fun calculateTip_20Percent_NoRoundUp() {
+    fun tipFor20PercentNoRoundUp() {
         val result = calculateTip(100.0, 20, false)
         assertEquals(20.0, result, 0.001)
     }
     @Test
-    fun calculateTip_15Percent_WithRoundUp() {
+    fun calculateTip15PercentRoundUp() {
         val result = calculateTip(100.0, 15, true)
         assertEquals(15.0, result, 0.001)
     }
     @Test
-    fun calculateTip_NegativeAmount_ReturnZero() {
+    fun returnsZeroForNegativeAmount() {
         val result = calculateTip(-50.0, 15, false)
         assertEquals(0.0, result, 0.001)
     }
     @Test
-    fun calculateTotalPerPerson_CorrectCalculation() {
+    fun totalPersonIsCorrect() {
         val bill = 120.0
         val tip = calculateTip(bill, 20, false)
         val people = 4

@@ -1,4 +1,4 @@
-package com.example.testeableapp.AdditionalUItest
+package com.example.testeableapp.additionalUiTests
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -9,12 +9,12 @@ import com.example.testeableapp.ui.Screens.TipCalculatorScreen
 import org.junit.Rule
 import org.junit.Test
 
-class AdditionalUItest2 {
+class AdditionalUitest2 {
     @get:Rule
     val composeTestRule = createComposeRule()
 
     @Test
-    fun checkMinimumPeople() {
+    fun minPeopleCheck() {
         composeTestRule.setContent {
             TipCalculatorScreen()
         }

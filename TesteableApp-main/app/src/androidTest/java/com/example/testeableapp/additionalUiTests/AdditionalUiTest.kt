@@ -1,4 +1,4 @@
-package com.example.testeableapp.AdditionalUItest
+package com.example.testeableapp.additionalUiTests
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.*
@@ -15,7 +15,7 @@ class AdditionalUITest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun invalidInputDoesNotCrashAndShowsZeroTip() {
+    fun zeroTipOnTextInput() {
         composeTestRule.setContent {
             TipCalculatorScreen()
         }
